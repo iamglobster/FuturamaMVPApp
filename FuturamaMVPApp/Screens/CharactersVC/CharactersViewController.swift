@@ -17,7 +17,6 @@ class CharactersViewController: UIViewController {
 
     // MARK: - Properties
     private lazy var cellType: String = String(describing: CharacterCell.self)
-    private lazy var dataSource = configureDataSourse()
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -43,6 +42,7 @@ class CharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        tableView.dataSource = self
     }
 
 }
@@ -71,6 +71,7 @@ private extension CharactersViewController {
     
     func setupConstreints() {
         view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -91,16 +92,14 @@ extension CharactersViewController: CharactersViewControllerProtocol {
     
 }
 
-// MARK: - UITableViewDelegate
-extension CharactersViewController: UITableViewDelegate {
+extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        20
     }
     
-    func configureDataSourse() -> UITableViewDiffableDataSource <Int, String> {
-        let dataSource = UITableViewDiffableDataSource<Int, String>(tableView: tableView) { tableView, indexPath, model in
-            return (tableView.dequeueReusableCell(withIdentifier: self.cellType) as? CharacterCell)
-        }
-        return dataSource
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellType) as! CharacterCell
+        cell.nameLabel.text = "Hello"
+        return cell
     }
 }

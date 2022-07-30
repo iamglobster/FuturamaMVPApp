@@ -17,4 +17,5 @@ class CharacterCell: UITableViewCell {
         super.awakeFromNib()
         nameLabel.text = "Hello"
     }
+ 
 }
