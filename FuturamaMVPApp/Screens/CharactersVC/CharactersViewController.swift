@@ -17,6 +17,8 @@ class CharactersViewController: UIViewController {
 
     // MARK: - Properties
     private lazy var cellType: String = String(describing: CharacterCell.self)
+    private lazy var dataSource = configureDataSource()
+    private let names = ["Vlad", "Kesha", "Yarik"]
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -42,7 +44,7 @@ class CharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        tableView.dataSource = self
+        update(with: names)
     }
 
 }
@@ -92,14 +94,36 @@ extension CharactersViewController: CharactersViewControllerProtocol {
     
 }
 
-extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
+extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        names.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellType) as! CharacterCell
-        cell.nameLabel.text = "Hello"
-        return cell
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellType) as! CharacterCell
+//        cell.nameLabel.text = "Hello"
+//        return cell
+//    }
+    
+    func configureDataSource() -> UITableViewDiffableDataSource <Int, String> {
+        let dataSource = UITableViewDiffableDataSource<Int, String>(tableView: tableView) { tableView, indexPath, names in
+            return(tableView.dequeueReusableCell(withIdentifier: self.cellType) as? CharacterCell)?.configure(with: names)
+        }
+        return dataSource
     }
+    
+    func update(with names: [String], and animated: Bool = false) {
+        var snapShot = NSDiffableDataSourceSnapshot <Int, String>()
+        
+        snapShot.appendSections([0])
+        snapShot.appendItems(names)
+        
+        if #available(iOS 15.0, *) {
+            self.dataSource.applySnapshotUsingReloadData(snapShot)
+        } else {
+            self.dataSource.apply(snapShot, animatingDifferences: animated)
+        }
+    }
+    
+    
 }

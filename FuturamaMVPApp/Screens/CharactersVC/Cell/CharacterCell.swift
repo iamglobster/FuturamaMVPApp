@@ -15,7 +15,12 @@ class CharacterCell: UITableViewCell {
     // MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        nameLabel.text = "Hello"
+    
+    }
+    
+    func configure(with name: String) -> CharacterCell {
+        nameLabel.text = name
+        return self
     }
  
 }
