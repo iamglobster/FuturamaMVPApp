@@ -44,6 +44,5 @@ private extension CharacterCell {
         self.selectionStyle = .none
         characterImageView.layer.cornerRadius = characterImageView.frame.height / 2
         characterImageView.contentMode = UIView.ContentMode.scaleToFill
-        characterImageView.image = UIImage(systemName: "person.fill.xmark")
     }
 }
