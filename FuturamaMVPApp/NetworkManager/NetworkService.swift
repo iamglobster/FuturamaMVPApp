@@ -7,10 +7,12 @@
 
 import Foundation
 
+// MARK: - NetworkServiceProtocol
 protocol NetworkServiceProtocol {
     func getCharacters(with stringURL: String, completion: @escaping ([Character]) -> Void)
 }
 
+// MARK: - NetworkService
 class NetworkService: NetworkServiceProtocol {
     func getCharacters(with stringURL: String, completion: @escaping ([Character]) -> Void) {
         guard let url = URL(string: stringURL) else { return }

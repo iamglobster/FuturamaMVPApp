@@ -10,6 +10,7 @@ import UIKit
 // MARK: - CharactersPresenterProtocol
 protocol CharactersPresenterProtocol {
     func getCharacters(stingURL: String)
+    func showDetailedInfoVC(viewController: UIViewController, model: Character)
 }
 
 // MARK: - CharactersPresenter
@@ -18,7 +19,7 @@ class CharactersPresenter: CharactersPresenterProtocol {
     // MARK: - Properties
     private var delegat: CharactersViewControllerProtocol!
     private let navigator: NavigatorProtocol
-    private let networkService: NetworkServiceProtocol
+    private let networkService: NetworkService
     var characters: [Character] = [] {
         didSet {
             delegat.get(characters: characters)
@@ -26,7 +27,7 @@ class CharactersPresenter: CharactersPresenterProtocol {
     }
     
     // MARK: - Init
-    init(navigator: NavigatorProtocol, networkService: NetworkServiceProtocol) {
+    init(navigator: NavigatorProtocol, networkService: NetworkService) {
         self.navigator = navigator
         self.networkService = networkService
     }
@@ -40,5 +41,11 @@ class CharactersPresenter: CharactersPresenterProtocol {
         networkService.getCharacters(with: API.stringURL.rawValue) { characters in
             self.characters = characters
         }
+    }
+    
+    func showDetailedInfoVC(viewController: UIViewController, model: Character) {
+        navigator.navigateToDetailedInfoVC(viewController: viewController,
+                                           model: model,
+                                           networkService: networkService)
     }
 }

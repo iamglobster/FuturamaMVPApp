@@ -12,14 +12,17 @@
 		51044E322893C31C00FBD0D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51044E312893C31C00FBD0D6 /* Assets.xcassets */; };
 		51044E422893C55200FBD0D6 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51044E402893C55200FBD0D6 /* CharactersViewController.swift */; };
 		51044E432893C55200FBD0D6 /* CharactersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51044E412893C55200FBD0D6 /* CharactersViewController.xib */; };
-		51044E452893C5C200FBD0D6 /* CharactersPresenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51044E442893C5C200FBD0D6 /* CharactersPresenterViewController.swift */; };
+		51044E452893C5C200FBD0D6 /* CharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51044E442893C5C200FBD0D6 /* CharactersPresenter.swift */; };
 		51044E482893D95D00FBD0D6 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51044E472893D95D00FBD0D6 /* AppAssembly.swift */; };
 		51044E4A2893DCA100FBD0D6 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51044E492893DCA100FBD0D6 /* Navigator.swift */; };
 		51044E4E2893E7E700FBD0D6 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51044E4C2893E7E700FBD0D6 /* CharacterCell.swift */; };
 		51044E4F2893E7E700FBD0D6 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51044E4D2893E7E700FBD0D6 /* CharacterCell.xib */; };
 		51D1C57A2896EFE600E99DC2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1C5792896EFE600E99DC2 /* API.swift */; };
 		51D1C57C2896F02300E99DC2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1C57B2896F02300E99DC2 /* NetworkService.swift */; };
-		51D1C57E2896F0ED00E99DC2 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1C57D2896F0ED00E99DC2 /* Characters.swift */; };
+		51D1C57E2896F0ED00E99DC2 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1C57D2896F0ED00E99DC2 /* Character.swift */; };
+		51D1C58328971AD000E99DC2 /* DetailedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1C58128971AD000E99DC2 /* DetailedInfoViewController.swift */; };
+		51D1C58428971AD000E99DC2 /* DetailedInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51D1C58228971AD000E99DC2 /* DetailedInfoViewController.xib */; };
+		51D1C58628971AEE00E99DC2 /* DetailedInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1C58528971AED00E99DC2 /* DetailedInfoPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,14 +33,17 @@
 		51044E362893C31C00FBD0D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51044E402893C55200FBD0D6 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
 		51044E412893C55200FBD0D6 /* CharactersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharactersViewController.xib; sourceTree = "<group>"; };
-		51044E442893C5C200FBD0D6 /* CharactersPresenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPresenterViewController.swift; sourceTree = "<group>"; };
+		51044E442893C5C200FBD0D6 /* CharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPresenter.swift; sourceTree = "<group>"; };
 		51044E472893D95D00FBD0D6 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		51044E492893DCA100FBD0D6 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		51044E4C2893E7E700FBD0D6 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		51044E4D2893E7E700FBD0D6 /* CharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
 		51D1C5792896EFE600E99DC2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		51D1C57B2896F02300E99DC2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		51D1C57D2896F0ED00E99DC2 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
+		51D1C57D2896F0ED00E99DC2 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		51D1C58128971AD000E99DC2 /* DetailedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoViewController.swift; sourceTree = "<group>"; };
+		51D1C58228971AD000E99DC2 /* DetailedInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedInfoViewController.xib; sourceTree = "<group>"; };
+		51D1C58528971AED00E99DC2 /* DetailedInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		51044E3E2893C4BE00FBD0D6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				51D1C57F28971A9500E99DC2 /* DetailedInfoVC */,
 				51044E3F2893C4F500FBD0D6 /* CharactersVC */,
 			);
 			path = Screens;
@@ -112,7 +119,7 @@
 				51044E4B2893E7B100FBD0D6 /* Cell */,
 				51044E402893C55200FBD0D6 /* CharactersViewController.swift */,
 				51044E412893C55200FBD0D6 /* CharactersViewController.xib */,
-				51044E442893C5C200FBD0D6 /* CharactersPresenterViewController.swift */,
+				51044E442893C5C200FBD0D6 /* CharactersPresenter.swift */,
 			);
 			path = CharactersVC;
 			sourceTree = "<group>";
@@ -138,7 +145,7 @@
 		51D1C5772896EF9600E99DC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				51D1C57D2896F0ED00E99DC2 /* Characters.swift */,
+				51D1C57D2896F0ED00E99DC2 /* Character.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -150,6 +157,16 @@
 				51D1C57B2896F02300E99DC2 /* NetworkService.swift */,
 			);
 			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		51D1C57F28971A9500E99DC2 /* DetailedInfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				51D1C58128971AD000E99DC2 /* DetailedInfoViewController.swift */,
+				51D1C58228971AD000E99DC2 /* DetailedInfoViewController.xib */,
+				51D1C58528971AED00E99DC2 /* DetailedInfoPresenter.swift */,
+			);
+			path = DetailedInfoVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +229,7 @@
 			files = (
 				51044E432893C55200FBD0D6 /* CharactersViewController.xib in Resources */,
 				51044E4F2893E7E700FBD0D6 /* CharacterCell.xib in Resources */,
+				51D1C58428971AD000E99DC2 /* DetailedInfoViewController.xib in Resources */,
 				51044E322893C31C00FBD0D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,15 +242,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				51044E302893C31B00FBD0D6 /* FuturamaMVPApp.xcdatamodeld in Sources */,
-				51044E452893C5C200FBD0D6 /* CharactersPresenterViewController.swift in Sources */,
+				51044E452893C5C200FBD0D6 /* CharactersPresenter.swift in Sources */,
+				51D1C58328971AD000E99DC2 /* DetailedInfoViewController.swift in Sources */,
 				51044E482893D95D00FBD0D6 /* AppAssembly.swift in Sources */,
 				51044E4E2893E7E700FBD0D6 /* CharacterCell.swift in Sources */,
 				51D1C57C2896F02300E99DC2 /* NetworkService.swift in Sources */,
+				51D1C58628971AEE00E99DC2 /* DetailedInfoPresenter.swift in Sources */,
 				51044E262893C31B00FBD0D6 /* AppDelegate.swift in Sources */,
 				51044E422893C55200FBD0D6 /* CharactersViewController.swift in Sources */,
 				51D1C57A2896EFE600E99DC2 /* API.swift in Sources */,
 				51044E4A2893DCA100FBD0D6 /* Navigator.swift in Sources */,
-				51D1C57E2896F0ED00E99DC2 /* Characters.swift in Sources */,
+				51D1C57E2896F0ED00E99DC2 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

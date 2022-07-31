@@ -10,6 +10,7 @@ import UIKit
 // MARK: - CharacterCell
 class CharacterCell: UITableViewCell {
 
+    // MARK: - IBOutlet
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var characterImageView: UIImageView!
     
@@ -43,5 +44,6 @@ private extension CharacterCell {
         self.selectionStyle = .none
         characterImageView.layer.cornerRadius = characterImageView.frame.height / 2
         characterImageView.contentMode = UIView.ContentMode.scaleToFill
+        characterImageView.image = UIImage(systemName: "person.fill.xmark")
     }
 }

@@ -98,7 +98,8 @@ extension CharactersViewController: CharactersViewControllerProtocol {
 // MARK: - UITableViewDelegate
 extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let _ = dataSource.itemIdentifier(for: indexPath) else { return }
+        guard let model = dataSource.itemIdentifier(for: indexPath) else { return }
+        presenter.showDetailedInfoVC(viewController: self, model: model)
     }
 
     // MARK: - DataSource methods
