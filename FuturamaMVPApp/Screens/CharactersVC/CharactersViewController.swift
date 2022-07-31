@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - CharactersViewControllerProtocol
 protocol CharactersViewControllerProtocol {
-    
+    func get(characters: [Character])
 }
 
 // MARK: - CharactersViewController
@@ -18,7 +18,6 @@ class CharactersViewController: UIViewController {
     // MARK: - Properties
     private lazy var cellType: String = String(describing: CharacterCell.self)
     private lazy var dataSource = configureDataSource()
-    private let names = ["Vlad", "Kesha", "Yarik"]
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -44,7 +43,7 @@ class CharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        update(with: names)
+        presenter.getCharacters(stingURL: API.stringURL.rawValue)
     }
 
 }
@@ -91,39 +90,37 @@ private extension CharactersViewController {
 
 // MARK: - CharactersViewControllerProtocol
 extension CharactersViewController: CharactersViewControllerProtocol {
-    
+    func get(characters: [Character]) {
+        update(with: characters)
+    }
 }
 
+// MARK: - UITableViewDelegate
 extension CharactersViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        names.count
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let _ = dataSource.itemIdentifier(for: indexPath) else { return }
     }
-    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellType) as! CharacterCell
-//        cell.nameLabel.text = "Hello"
-//        return cell
-//    }
-    
-    func configureDataSource() -> UITableViewDiffableDataSource <Int, String> {
-        let dataSource = UITableViewDiffableDataSource<Int, String>(tableView: tableView) { tableView, indexPath, names in
-            return(tableView.dequeueReusableCell(withIdentifier: self.cellType) as? CharacterCell)?.configure(with: names)
+
+    // MARK: - DataSource methods
+    func configureDataSource() -> UITableViewDiffableDataSource <Int, Character> {
+        let dataSource = UITableViewDiffableDataSource<Int, Character>(tableView: tableView) { tableView, indexPath, model in
+            return(tableView.dequeueReusableCell(withIdentifier: self.cellType) as? CharacterCell)?.configure(with: model)
         }
         return dataSource
     }
     
-    func update(with names: [String], and animated: Bool = false) {
-        var snapShot = NSDiffableDataSourceSnapshot <Int, String>()
-        
-        snapShot.appendSections([0])
-        snapShot.appendItems(names)
-        
-        if #available(iOS 15.0, *) {
-            self.dataSource.applySnapshotUsingReloadData(snapShot)
-        } else {
-            self.dataSource.apply(snapShot, animatingDifferences: animated)
+    func update(with models: [Character], and animated: Bool = false) {
+        DispatchQueue.main.async {
+            var snapShot = NSDiffableDataSourceSnapshot <Int, Character>()
+            
+            snapShot.appendSections([0])
+            snapShot.appendItems(models)
+            
+            if #available(iOS 15.0, *) {
+                self.dataSource.applySnapshotUsingReloadData(snapShot)
+            } else {
+                self.dataSource.apply(snapShot, animatingDifferences: animated)
+            }
         }
     }
-    
-    
 }

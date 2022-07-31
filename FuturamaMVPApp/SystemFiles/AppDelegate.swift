@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let navigator = Navigator()
-        let navigationVC = navigator.createCharactersList()
+        let networkService = NetworkService()
+        let navigationVC = navigator.createCharactersList(networkService: networkService)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()

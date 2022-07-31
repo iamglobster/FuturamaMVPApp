@@ -9,8 +9,10 @@ import UIKit
 
 class AppAssembly {
     
-    func createCharactersList() -> UINavigationController {
-        let presenter = CharactersPresenter()
+    func createCharactersList(navigator: Navigator,
+                              networkService: NetworkService) -> UINavigationController {
+        
+        let presenter = CharactersPresenter(navigator: navigator, networkService: networkService)
         let charactersVC = CharactersViewController(presenter: presenter)
         presenter.set(delegate: charactersVC)
         let navigationVC = UINavigationController(rootViewController: charactersVC)

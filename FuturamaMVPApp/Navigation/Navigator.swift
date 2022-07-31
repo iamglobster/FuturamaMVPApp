@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - NavigatorProtocol
 protocol NavigatorProtocol {
-    func createCharactersList() -> UINavigationController
+    func createCharactersList(networkService: NetworkService) -> UINavigationController
 }
 
 // MARK: - Navigator
@@ -19,8 +19,8 @@ class Navigator: NavigatorProtocol {
     private let appAssembly = AppAssembly()
     
     // MARK: - Methods
-    func createCharactersList() -> UINavigationController {
-        let navigationVC = appAssembly.createCharactersList()
+    func createCharactersList(networkService: NetworkService) -> UINavigationController {
+        let navigationVC = appAssembly.createCharactersList(navigator: self, networkService: networkService)
         
         return navigationVC
     }
