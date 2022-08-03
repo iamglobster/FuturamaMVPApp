@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Characters" representedClassName="Characters" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="String"/>
+        <attribute name="firstAppearanse" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="picURL" optional="YES" attributeType="String"/>
+        <attribute name="planet" optional="YES" attributeType="String"/>
+        <attribute name="profession" optional="YES" attributeType="String"/>
+        <attribute name="species" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <relationship name="newCharacter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Characters" inverseName="newCharacter" inverseEntity="Characters"/>
+    </entity>
+    <elements>
+        <element name="Characters" positionX="4292.05859375" positionY="1157.34765625" width="146.7265625" height="163"/>
+    </elements>
 </model>

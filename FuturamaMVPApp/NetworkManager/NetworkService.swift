@@ -22,7 +22,7 @@ class NetworkService: NetworkServiceProtocol {
             guard let data = data else { return }
             
             let decoder = JSONDecoder()
-            
+
             do {
                 let characters = try decoder.decode([Character].self, from: data)
                 completion(characters)
