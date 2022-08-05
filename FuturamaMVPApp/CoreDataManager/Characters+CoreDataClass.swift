@@ -12,7 +12,13 @@ import UIKit
 
 @objc(Characters)
 class Characters: NSManagedObject {
+    
+//    init(networkServece: NetworkService) {
+//        super.init(entity: <#T##NSEntityDescription#>, insertInto: <#T##NSManagedObjectContext?#>)
+//    }
+}
 
+// //Variant 2
 //    func parseJSON(completed: @escaping ()-> ()) {
 //        let url = URL(string: API.stringURL.rawValue)
 //        let decoder = JSONDecoder()
@@ -27,28 +33,29 @@ class Characters: NSManagedObject {
 //        super.init(entity: <#T##NSEntityDescription#>, insertInto: <#T##NSManagedObjectContext?#>)
 //
 //    }
-}
-/* Variant 1
-    @NSManaged var property: String?
 
-    enum CodingKeys: String, CodingKey {
-        case property = "json_key"
-    }
+/*
+ //Variant 1
+ @NSManaged var property: String?
 
-    required convenience init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[.context!] as? NSManagedObjectContext else { fatalError() }
-        guard let entity = NSEntityDescription.entity(forEntityName: "Characters", in: context) else { fatalError() }
+ enum CodingKeys: String, CodingKey {
+     case property = "json_key"
+ }
 
-        self.init(entity: entity, insertInto: context)
+ required convenience init(from decoder: Decoder) throws {
+     guard let context = decoder.userInfo[.context!] as? NSManagedObjectContext else { fatalError() }
+     guard let entity = NSEntityDescription.entity(forEntityName: "Characters", in: context) else { fatalError() }
 
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.property = try container.decodeIfPresent(String.self, forKey: .property)
-    }
+     self.init(entity: entity, insertInto: context)
 
-    let data =
-}
+     let container = try decoder.container(keyedBy: CodingKeys.self)
+     self.property = try container.decodeIfPresent(String.self, forKey: .property)
+ }
 
-extension CodingUserInfoKey {
-    static let context = CodingUserInfoKey(rawValue: "context")
-}
-*/
+ let data =
+ }
+ 
+ extension CodingUserInfoKey {
+     static let context = CodingUserInfoKey(rawValue: "context")
+ }
+ */
