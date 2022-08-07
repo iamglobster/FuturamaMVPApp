@@ -23,7 +23,7 @@ class CharactersViewController: UIViewController {
         let tableView = UITableView()
         tableView.alwaysBounceVertical = false
         tableView.showsVerticalScrollIndicator = false
-    
+
         return tableView
     }()
     
@@ -100,6 +100,10 @@ extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let model = dataSource.itemIdentifier(for: indexPath) else { return }
         presenter.showDetailedInfoVC(viewController: self, model: model)
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        <#code#>
     }
 
     // MARK: - DataSource methods
