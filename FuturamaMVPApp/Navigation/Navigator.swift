@@ -10,9 +10,9 @@ import UIKit
 // MARK: - NavigatorProtocol
 protocol NavigatorProtocol {
     func createCharactersList(networkService: NetworkService) -> UINavigationController
-    func createDetailedInfoVC(networkService: NetworkService, model: Character) -> UIViewController
+    func createDetailedInfoVC(networkService: NetworkService, model: Characters) -> UIViewController
     func navigateToDetailedInfoVC(viewController: UIViewController,
-                                  model: Character,
+                                  model: Characters,
                                   networkService: NetworkService)
 }
 
@@ -29,14 +29,14 @@ class Navigator: NavigatorProtocol {
         return navigationVC
     }
     
-    func createDetailedInfoVC(networkService: NetworkService, model: Character) -> UIViewController {
+    func createDetailedInfoVC(networkService: NetworkService, model: Characters) -> UIViewController {
         let detailedInfoVC = appAssembly.createDetailedInfoVC(networkService: networkService, model: model)
         
         return detailedInfoVC
     }
     
     func navigateToDetailedInfoVC(viewController: UIViewController,
-                                  model: Character,
+                                  model: Characters,
                                   networkService: NetworkService) {
         
         let detailedInfoVC = appAssembly.createDetailedInfoVC(networkService: networkService, model: model)

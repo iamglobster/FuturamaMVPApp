@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - DetailedInfoPresenterProtocol
 protocol DetailedInfoPresenterProtocol {
-    var characters: Character { get }
+    var characters: Characters { get }
 }
 
 // MARK: - DetailedInfoPresenter
@@ -18,10 +18,10 @@ class DetailedInfoPresenter: DetailedInfoPresenterProtocol {
     // MARK: - Properties
     private var delegate: DetailedInfoViewControllerProtocol!
     private let networkService: NetworkServiceProtocol
-    var characters: Character
+    var characters: Characters
     
     // MARK: - Init
-    init(networkService: NetworkServiceProtocol, characters: Character) {
+    init(networkService: NetworkServiceProtocol, characters: Characters) {
         self.networkService = networkService
         self.characters = characters
     }

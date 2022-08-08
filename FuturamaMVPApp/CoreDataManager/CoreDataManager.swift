@@ -11,19 +11,18 @@ import UIKit
 class CoreDataManager {
     
     static let shared = CoreDataManager()
-    //private var characters = [Characters()]
+    private var characters = [Characters()]
     
     private let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // MARK: - Methods
-    func fetchRequest() -> [Characters] {
+    func fetchRequest() {
         let fetchRequest: NSFetchRequest<Characters> = Characters.fetchRequest()
         
         do {
-            return try viewContext.fetch(fetchRequest)
+            characters = try viewContext.fetch(fetchRequest)
         } catch let dataError{
             print("Failed to fatch data, \(dataError.localizedDescription)")
-            return []
         }
     }
     

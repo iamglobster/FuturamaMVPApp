@@ -9,12 +9,12 @@ import UIKit
 
 // MARK: - CharactersViewControllerProtocol
 protocol CharactersViewControllerProtocol {
-    func get(characters: [Character])
+    func get(characters: [Characters])
 }
 
 // MARK: - CharactersViewController
 class CharactersViewController: UIViewController {
-
+    
     // MARK: - Properties
     private lazy var cellType: String = String(describing: CharacterCell.self)
     private lazy var dataSource = configureDataSource()
@@ -23,11 +23,12 @@ class CharactersViewController: UIViewController {
         let tableView = UITableView()
         tableView.alwaysBounceVertical = false
         tableView.showsVerticalScrollIndicator = false
-
+        
         return tableView
     }()
     
-    private let presenter: CharactersPresenterProtocol
+    private var presenter: CharactersPresenterProtocol
+    private var isEditingMode = false
     
     // MARK: - Init
     init(presenter: CharactersPresenterProtocol) {
@@ -45,7 +46,7 @@ class CharactersViewController: UIViewController {
         setupUI()
         presenter.getCharacters(stingURL: API.stringURL.rawValue)
     }
-
+    
 }
 
 // MARK: - Private Extension
@@ -54,6 +55,7 @@ private extension CharactersViewController {
         setupNavigationBar()
         setupConstreints()
         setupTableView()
+        setupEditButtonItem()
     }
     
     func setupNavigationBar() {
@@ -68,6 +70,22 @@ private extension CharactersViewController {
         
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+    }
+    
+    func setupEditButtonItem() {
+        navigationItem.leftBarButtonItem = editButtonItem
+        editButtonItem.action = #selector(editButton(_:))
+    }
+    
+    @objc func editButton(_ sender: UIBarButtonItem) {
+        if !isEditingMode {
+            isEditingMode = true
+            editButtonItem.title = "Done"
+        } else {
+            isEditingMode = false
+            editButtonItem.title = "Edit"
+        }
+        tableView.setEditing(isEditingMode, animated: true)
     }
     
     func setupConstreints() {
@@ -90,7 +108,7 @@ private extension CharactersViewController {
 
 // MARK: - CharactersViewControllerProtocol
 extension CharactersViewController: CharactersViewControllerProtocol {
-    func get(characters: [Character]) {
+    func get(characters: [Characters]) {
         update(with: characters)
     }
 }
@@ -102,29 +120,45 @@ extension CharactersViewController: UITableViewDelegate {
         presenter.showDetailedInfoVC(viewController: self, model: model)
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        <#code#>
-    }
-
-    // MARK: - DataSource methods
-    func configureDataSource() -> UITableViewDiffableDataSource <Int, Character> {
-        let dataSource = UITableViewDiffableDataSource<Int, Character>(tableView: tableView) { tableView, indexPath, model in
-            return(tableView.dequeueReusableCell(withIdentifier: self.cellType) as? CharacterCell)?.configure(with: model)
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        //        let currentCharacter = presenter.characters.remove(at: sourceIndexPath.row)
+        //        presenter.characters.insert(currentCharacter, at: destinationIndexPath.row)
+        //    }
+        
+        func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+            .delete
         }
-        return dataSource
-    }
-    
-    func update(with models: [Character], and animated: Bool = false) {
-        DispatchQueue.main.async {
-            var snapShot = NSDiffableDataSourceSnapshot <Int, Character>()
-            
-            snapShot.appendSections([0])
-            snapShot.appendItems(models)
-            
-            if #available(iOS 15.0, *) {
-                self.dataSource.applySnapshotUsingReloadData(snapShot)
-            } else {
-                self.dataSource.apply(snapShot, animatingDifferences: animated)
+        
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            //        let character = presenter.characters[indexPath.row]
+            //
+            //        if editingStyle == .delete {
+            //            presenter.characters.remove(at: indexPath.row)
+            //            tableView.deleteRows(at: [indexPath], with: .automatic)
+            //            //CoreDataManager.shared.delete(character: character)
+            //        }
+        }
+        
+        // MARK: - DataSource methods
+        func configureDataSource() -> UITableViewDiffableDataSource <Int, Characters> {
+            let dataSource = UITableViewDiffableDataSource<Int, Characters>(tableView: tableView) { tableView, indexPath, model in
+                return(tableView.dequeueReusableCell(withIdentifier: self.cellType) as? CharacterCell)?.configure(with: model)
+            }
+            return dataSource
+        }
+        
+        func update(with models: [Characters], and animated: Bool = false) {
+            DispatchQueue.main.async {
+                var snapShot = NSDiffableDataSourceSnapshot <Int, Characters>()
+                
+                snapShot.appendSections([0])
+                snapShot.appendItems(models)
+                
+                if #available(iOS 15.0, *) {
+                    self.dataSource.applySnapshotUsingReloadData(snapShot)
+                } else {
+                    self.dataSource.apply(snapShot, animatingDifferences: animated)
+                }
             }
         }
     }

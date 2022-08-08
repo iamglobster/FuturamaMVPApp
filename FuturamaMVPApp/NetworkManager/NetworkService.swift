@@ -9,12 +9,12 @@ import Foundation
 
 // MARK: - NetworkServiceProtocol
 protocol NetworkServiceProtocol {
-    func getCharacters(with stringURL: String, completion: @escaping ([Character]) -> Void)
+    func getCharacters(with stringURL: String, completion: @escaping ([Characters]) -> Void)
 }
 
 // MARK: - NetworkService
 class NetworkService: NetworkServiceProtocol {
-    func getCharacters(with stringURL: String, completion: @escaping ([Character]) -> Void) {
+    func getCharacters(with stringURL: String, completion: @escaping ([Characters]) -> Void) {
         guard let url = URL(string: stringURL) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -24,7 +24,7 @@ class NetworkService: NetworkServiceProtocol {
             let decoder = JSONDecoder()
 
             do {
-                let characters = try decoder.decode([Character].self, from: data)
+                let characters = try decoder.decode([Characters].self, from: data)
                 completion(characters)
             } catch let error {
                 print(error.localizedDescription)

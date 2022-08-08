@@ -21,7 +21,7 @@ class CharacterCell: UITableViewCell {
     }
     
     // MARK: - Methods
-    func configure(with model: Character) -> CharacterCell {
+    func configure(with model: Characters) -> CharacterCell {
         nameLabel.text = model.name
         
         guard let imageURL = URL(string: model.picURL ?? "") else { return self}

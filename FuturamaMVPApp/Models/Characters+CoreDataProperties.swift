@@ -11,7 +11,7 @@ import CoreData
 
 
 extension Characters {
-    
+  
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Characters> {
         return NSFetchRequest<Characters>(entityName: "Characters")
     }
@@ -25,16 +25,16 @@ extension Characters {
     @NSManaged public var species: String?
     @NSManaged public var status: String?
 
-//    enum CodingKeys: String, CodingKey {
-//        case species = "Species"
-//        case age = "Age"
-//        case planet = "Planet"
-//        case profession = "Profession"
-//        case status = "Status"
-//        case firstAppearanse = "FirstAppearance"
-//        case picURL = "PicUrl"
-//        case name = "Name"
-//    }
+    enum CodingKeys: String, CodingKey {
+        case species = "Species"
+        case age = "Age"
+        case planet = "Planet"
+        case profession = "Profession"
+        case status = "Status"
+        case firstAppearanse = "FirstAppearance"
+        case picURL = "PicUrl"
+        case name = "Name"
+    }
 }
 
 extension Characters : Identifiable {

@@ -20,7 +20,7 @@ class AppAssembly {
         return navigationVC
     }
     
-    func createDetailedInfoVC(networkService: NetworkService, model: Character) -> UIViewController {
+    func createDetailedInfoVC(networkService: NetworkService, model: Characters) -> UIViewController {
         let presenter = DetailedInfoPresenter(networkService: networkService, characters: model)
         let detailedInfoVC = DetailedInfoViewController(presenter: presenter)
         presenter.set(delegat: detailedInfoVC)
